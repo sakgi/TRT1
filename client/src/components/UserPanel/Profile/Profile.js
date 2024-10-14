@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "client/src/firebase/firebaseconfig.js";
+import { auth, db } from "C:/Users/tatko/Downloads/ticket-raising-tool-front/client/src/firebase/firebaseconfig.js";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { FaEdit } from "react-icons/fa";
