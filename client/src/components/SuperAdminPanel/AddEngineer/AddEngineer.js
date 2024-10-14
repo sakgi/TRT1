@@ -4,7 +4,7 @@ import './AddEngineer.css';
 import { useNavigate } from 'react-router-dom';
 
 function AddEngineer() {
-  const [rows, setRows] = useState([{ name: '', email: '' }]);
+  const [rows, setRows] = useState([{ email: '' }]); // Removed name field
   const navigate = useNavigate();
 
   const hideNavigationBar = () => {
@@ -27,7 +27,7 @@ function AddEngineer() {
   }, []);
 
   const handleAddRow = () => {
-    setRows([...rows, { name: '', email: '' }]);
+    setRows([...rows, { email: '' }]); // Removed name field
   };
 
   const handleInputChange = (index, field, value) => {
@@ -48,11 +48,11 @@ function AddEngineer() {
 
   const handleSubmit = () => {
     for (let row of rows) {
-      if (!row.name || !row.email) {
+      if (!row.email) {
         Swal.fire({
           icon: 'error',
           title: 'Validation Error',
-          text: 'Please fill out all fields!',
+          text: 'Please enter an email address!',
           confirmButtonText: 'OK'
         });
         return;
@@ -87,21 +87,11 @@ function AddEngineer() {
       </div>
       <div className="table">
         <div className="table-row table-header">
-          <div className="table-cell">Name</div>
-          <div className="table-cell">Email ID</div>
-          <div className="table-cell">Action</div>
+          <div className="table-cell">Email ID</div> {/* Removed "Name" */}
+          {/* <div className="table-cell">Action</div> */}
         </div>
         {rows.map((row, index) => (
           <div className="table-row fade-in" key={index}>
-            <div className="table-cell">
-              <input
-                type="text"
-                placeholder="Enter Name"
-                value={row.name}
-                className="input-field"
-                onChange={(e) => handleInputChange(index, 'name', e.target.value)}
-              />
-            </div>
             <div className="table-cell">
               <input
                 type="email"
