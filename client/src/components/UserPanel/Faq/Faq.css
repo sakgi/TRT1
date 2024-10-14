@@ -73,7 +73,7 @@ body {
 
 /* Hide scrollbar for .faq-details */
 .faq-details::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar for webkit browsers */
+ display: none; /* Hides the scrollbar for webkit browsers */
 }
 
 .faq-details {
