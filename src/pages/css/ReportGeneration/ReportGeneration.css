@@ -1,0 +1,61 @@
+.report-container {
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  
+  .filter-group label {
+    font-weight: bold; /* Labels are now bold */
+    margin-bottom: 5px;
+  }
+  
+  .date-picker-group {
+    display: flex;
+    gap: 10px; /* Add space between the start and end date pickers */
+  }
+  
+  .filter-group select,
+  .date-picker-group input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .download-btn {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto; /* Align button to the right */
+  }
+  
+  .download-btn:hover {
+    background-color: #218838;
+  }
+  
+  .graph-section {
+    text-align: center;
+  }
+  
+  .graph-section canvas {
+    margin: 0 auto;
+  }
+  

@@ -1,0 +1,84 @@
+@media (min-width: 768px) {
+  .admin-tickets-container {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    top: 15px;
+    left: 15px;
+  }
+  h1 {
+    font-size: 20px; /* Further adjust font size */
+    top: 5px; /* Further adjust the top position */
+    left: 5px; /* Further adjust the left position */
+    width: calc(100% - 10px); /* Adjust width again */
+    padding: 10px 5px; /* Further adjust padding */
+}
+
+  .sidebar {
+    margin-top: -3%;
+    width: 200px;
+  }
+
+  .sidebar ul li {
+    padding: 10px 15px;
+  }
+
+  .tickets-table th, .tickets-table td {
+    padding: 10px;
+  }
+
+  .tickets-table {
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hamburger {
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+  }
+  .sidebar {
+    margin-top: -8.5%;
+    width: 200px;
+  }
+  .sidebar ul li {
+    padding: 8px 10px;
+  }
+
+  .content {
+    padding: 10px;
+    padding-top: 50px;
+  }
+
+  .tickets-table th, .tickets-table td {
+    padding: 8px;
+  }
+
+  .tickets-table {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .navbar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+}

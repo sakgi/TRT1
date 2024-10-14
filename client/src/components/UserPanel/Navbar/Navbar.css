@@ -1,0 +1,102 @@
+.navbar-trt {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Slightly taller navbar for better spacing */
+  z-index: 1000; /* Ensure the navbar stays on top */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease;
+}
+
+.navbar-trt.scrolled {
+  background-color: rgba(0, 123, 255, 0.9); /* Slightly transparent on scroll */
+}
+
+.navbar-container-trt {
+  width: 100%;
+  max-width: 1200px; /* Limit the navbar width on large screens */
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center;
+  padding: 0 10px;
+}
+
+.navbar-logo-trt {
+  margin-left: auto;
+  margin-right: -100px; /* Increased right margin for more space */
+}
+
+.menu-icon-trt {
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding-left: 15px;
+}
+
+.menu-icon-trt:hover {
+  color: #060606; /* Highlight on hover */
+  transform: scale(1.1); /* Slight scale-up on hover */
+}
+
+.navbar-logo-trt img {
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo-trt img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.navbar-logo-trt img {
+  animation: pulse 3s infinite;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar-trt {
+    height: 60px;
+  }
+
+  .menu-icon-trt {
+    font-size: 24px;
+  }
+
+  .navbar-logo-trt img {
+    width: 45px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-trt {
+    height: 50px;
+  }
+
+  .menu-icon-trt {
+    font-size: 22px;
+  }
+
+  .navbar-logo-trt img {
+    width: 40px;
+    height: 30px;
+  }
+}

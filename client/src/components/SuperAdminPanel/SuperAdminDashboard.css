@@ -1,0 +1,168 @@
+/* AdminTickets Container */
+.admin-tickets-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f7f9fc;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  color: #333;
+  height: 100vh;
+  position: fixed;
+  left: -240px; /* Hidden by default */
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  border-radius: 0 15px 15px 0; /* Rounded right corners */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.sidebar.open {
+  left: 0; /* Reveal the sidebar */
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center the loader vertically */
+}
+
+
+.sidebar-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #007bff;
+}
+
+/* Sidebar menu items */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px; /* Space from top */
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+  transform: translateX(8px); /* Move to right slightly */
+  border-radius: 10px; /* Round corners on hover */
+}
+
+.sidebar ul li .icon {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #007bff; /* Blue icon color */
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Add transition effects for bottom section */
+.sidebar .bottom-section {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.bottom-section ul li {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.bottom-section ul li:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+  transform: translateX(8px); /* Move to right slightly */
+}
+
+.bottom-section ul li .icon {
+  color: #007bff; /* Red icon color */
+}
+
+/* Header */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 30px; /* Adjust padding */
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between hamburger and logo */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.animated-text{
+  font-weight: bold;
+}
+
+/* Navbar right section for logo */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px; /* Adjust the logo size as needed */
+  margin-left: 20px; /* Add space between logo and edge */
+}
+
+/* Hamburger Icon */
+.hamburger {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+  margin-right: auto; /* Ensure hamburger is on the left */
+}
+
+/* Fade-out animation */
+.fade-out {
+  animation: fadeOut 1s forwards; /* Apply fade-out animation */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px); /* Optional upward movement */
+  }
+}
+
+/* Content */
+.content {
+  margin-top: 70px; /* Adjust for the fixed header */
+  padding: 20px;
+  background-color: #f7f9fc; /* Light background */
+  width: 100%;
+}
+
+.sidebar.open + .content {
+  margin-left: 240px; /* Shift content when sidebar opens */
+}

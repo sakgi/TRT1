@@ -1,0 +1,119 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+label {
+  margin-right: 15px;
+  font-weight: bold;
+  width: 200px; /* Fixed width for labels */
+}
+
+.form-input,
+.form-select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  color: #555;
+  font-size: 16px;
+  height: 44px; /* Match height of other input fields */
+}
+
+.save-changes-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-changes-btn:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  label {
+    width: auto;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-input,
+  .form-select {
+    max-width: 100%;
+  }
+
+  .save-changes-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .save-changes-btn {
+    padding: 10px;
+  }
+
+  .error-message {
+    font-size: 10px;
+  }
+}
+
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  margin-right: 10px;
+  transform: translateY(1px);
+}
+
+.form-select1 {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 450px;
+  color: #555;
+  font-size: 16px;
+  height: 44px; /* Match height of other input fields */
+}
+
+

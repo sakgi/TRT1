@@ -1,0 +1,330 @@
+/* General tickets container styling */
+.tickets-container {
+  padding: 20px;
+  background-color: #f7f8fc; /* Light background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 20px; /* Space between sections */
+  font-family: 'Roboto', sans-serif; /* Clean font */
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+}
+
+.top-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    gap: 10px; /* Adjust this to add spacing */
+  }
+
+
+  .total-tickets .ticket-icon {
+    font-size: 2em;
+    color: #007bff;
+    animation: spin 10s linear infinite;
+  }
+
+/* Keyframe animation for fading in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header area styling */
+.header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-text {
+  color: #007bff;
+  font-size: 2.2em; /* Larger title */
+  font-weight: bold;
+  animation: slideIn 0.5s ease-in; /* Slide-in effect */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Button for adding a ticket *//* New ticket and total tickets container */
+.new-ticket-total-container {
+  display: flex;
+  justify-content: flex-start; /* Align both items to the left */
+  align-items: center;
+  gap: 20px; /* Space between the button and the total tickets */
+  margin-bottom: 20px; /* Space below the section */
+}
+
+.new-ticket {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.new-ticket:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.total-tickets {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+
+/* Keyframes for fade-in and scaling effect */
+@keyframes fadeInTotal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Color change for high ticket numbers */
+.total-tickets.high {
+  color: #dc3545; /* Red for high ticket count */
+}
+
+.total-tickets.medium {
+  color: #ffc107; /* Yellow for medium ticket count */
+}
+
+.total-tickets.low {
+  color: #28a745; /* Green for low ticket count */
+}
+
+/* 3D spin keyframes */
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Color change for high ticket numbers */
+.total-tickets.high {
+  color: #dc3545; /* Red for high ticket count */
+}
+
+.total-tickets.medium {
+  color: #ffc107; /* Yellow for medium ticket count */
+}
+
+.total-tickets.low {
+  color: #28a745; /* Green for low ticket count */
+}
+
+/* Add a subtle pulsing animation */
+@keyframes pulseTotal {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.total-tickets.pulse {
+  animation: pulseTotal 1s infinite;
+}
+
+/* Add a subtle pulsing animation */
+@keyframes pulseTotal {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.total-tickets.pulse {
+  animation: pulseTotal 1s infinite;
+}
+
+
+/* Search and filter section styling */
+.search-filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  animation: pulse 0.5s; /* Pulsing effect on focus */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.filters select {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Add transition effect for select on focus */
+.filters select {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filters select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Tickets table styling */
+.tickets-table-container {
+  margin-top: 20px;
+  overflow-x: auto; /* Ensures the table is scrollable on small screens */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+}
+
+.tickets-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.tickets-table th, .tickets-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform */
+}
+
+.tickets-table th {
+  background-color: #f7f7f7;
+  color: #333;
+  font-weight: 600;
+}
+
+.tickets-table tr {
+  transition: transform 0.2s; /* Added transition for rows */
+}
+
+.tickets-table tr:hover {
+  background-color: #eef5ff;
+  transform: translateY(-2px); /* Slight lift on hover */
+  cursor: pointer;
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform */
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.pagination .active {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .search-filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tickets-table th, .tickets-table td {
+    padding: 10px;
+  }
+}

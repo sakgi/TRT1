@@ -1,0 +1,225 @@
+/* AdminTickets.css */
+
+.admin-tickets-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/* Hamburger icon */
+.hamburger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 220px; /* Keep this width consistent */
+  background-color: #2c3e50;
+  color: white;
+  height: 100vh;
+  padding-top: 0px;
+  position: fixed;
+  left: -400px; /* Increase this value to reduce the distance between the sidebar and the edge */
+  transition: left 0.3s ease;
+  z-index: 999;
+  margin-top: 1.8%;
+}
+
+.sidebar.open {
+  left: 0; /* Show sidebar when open */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar ul li .icon {
+  margin-right: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Sidebar Styling for Profile Section */
+.sidebar ul li.profile a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar ul li.profile a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* Ensure no hover effect */
+.sidebar ul li:not(.profile) {
+  background-color: initial;
+}
+
+.sidebar ul li.profile.active {
+  background-color: #2980b9; /* Change color when the profile is active */
+}
+
+/* Main content styling */
+.content {
+  flex-grow: 1;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+  width: 100%;
+}
+
+.sidebar.open + .content {
+  margin-left: 220px;
+}
+
+/* Tickets Component Styling */
+/* Header and top section */
+h1 {
+  font-size: 28px;
+  background-color: #007bff;
+  color: white;
+  padding: 20px 0;
+  border-radius: 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+
+/* Add this to your AdminTicketsResponsive.css or AdminTickets.css */
+.content.blur {
+  filter: blur(2px); /* Adjust the blur intensity as needed */
+  transition: filter 0.3s ease; /* Smooth transition */
+}
+
+
+body {
+  padding-top: 80px;
+   /* Adjust based on header height */
+}
+
+.tickets-container {
+  padding: 20px;
+}
+
+.new-ticket-total-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.new-ticket {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.total-tickets {
+  font-size: 16px;
+}
+
+.search-filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.filters select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+/* Tickets table styling */
+.tickets-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.tickets-table th, .tickets-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tickets-table th {
+  background-color: #f2f2f2;
+}
+
+.tickets-table select {
+  padding: 5px;
+}
+
+/* Responsive Adjustments */
+
+/* Profile Icon Adjustments */
+.sidebar ul li.profile a {
+  display: flex;
+  margin-top: 150%;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+}
+
+/* General Sidebar Styling Adjustments */
+.sidebar {
+  box-shadow: 2px 0 5px rgba(76, 52, 52, 0.2); 
+}
+
+/* Responsive Adjustments */
+
+/* Container adjustments for smaller screens */
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar {
+  width: 20%;
+  padding: 20px;
+}
+
+.content {
+  width: 75%;
+  padding: 20px;
+}
+
+

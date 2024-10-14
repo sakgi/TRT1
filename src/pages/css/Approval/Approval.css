@@ -1,0 +1,237 @@
+/* General styling */
+.tickets-container {
+  padding: 20px;
+}
+
+/* Header and top section */
+h1 {
+  font-size: 28px;
+  background-color: #007bff; /* Set background color for the heading */
+  color: white;
+  padding: 35px 5px; /* Adjust padding for better spacing */
+  border-radius: 5px;
+  margin: 0; /* Remove default margin to touch the top of the page */
+  text-align: center; /* Center text for a better look */
+}
+body {
+  padding-top: 80px; /* Adjust this value based on the height of your h1 element */
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* New ticket button */
+.new-ticket button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.new-ticket button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 480px) {
+  .new-ticket button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Search filter section */
+.search-filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input,
+.filters select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .search-filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar input,
+  .filters select {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .filters select {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Table styling */
+.tickets-table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-top: 20px;
+}
+
+.tickets-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1000px; /* Ensure table has enough width to scroll */
+}
+
+.tickets-table th,
+.tickets-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tickets-table th {
+  background-color: #f2f2f2;
+}
+
+.tickets-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  .tickets-table th,
+  .tickets-table td {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tickets-table th,
+  .tickets-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.pagination button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .pagination button {
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination button {
+    padding: 5px 10px;
+  }
+}
+
+/* Ticket stats and search bar */
+.total-tickets {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+@media (max-width: 480px) {
+  .total-tickets {
+    font-size: 16px;
+  }
+}
+
+.total-tickets-box {
+  background-color: #e6f7ff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150px;
+  text-align: center;
+}
+
+.total-tickets-count {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.total-tickets-count .count {
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+/* Search bar with icon */
+.search-bar-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.search-bar-with-icon input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-bar-with-icon .search-icon {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .tickets-page-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .tickets-page-container {
+    flex-direction: column;
+  }
+}
