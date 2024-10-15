@@ -1,25 +1,22 @@
 // import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase/firebaseconfig.js"; // Import Firebase auth configuration
+// import { auth } from "../../firebase/firebaseconfig.js";
 // import Button from "@mui/material/Button";
 // import Stack from "@mui/material/Stack";
 // import Tooltip from "@mui/material/Tooltip";
 // import axios from "axios";
-// import "./Login.css";
+// import "../Auth/Login.css";
 
-// const Login = () => {
+// const UserLogin = () => {
 //   const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [message, setMessage] = useState("");
 //   const [messageType, setMessageType] = useState("");
-//   const [error, setError] = useState(""); 
+//   const [error, setError] = useState("");
 //   const navigate = useNavigate();
 
-//   // Regular expression for allowed email domains
 //   const allowedEmailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|yahoo)\.com$/;
-
-//   // Password validation criteria (kept for validation purposes)
 //   const passwordCriteria = [
 //     { label: "At least 6 characters", test: /.{6,}/ },
 //     { label: "At least 1 uppercase letter", test: /[A-Z]/ },
@@ -28,20 +25,17 @@
 //     { label: "At least 1 special character", test: /[!@#$%^&*(),.?":{}|<>]/ },
 //   ];
 
-//   // Check if password meets criteria
 //   const isCriteriaMet = (test) => test.test(password);
 
 //   const handleLogin = async (e) => {
 //     e.preventDefault();
 //     setMessage("");
 
-//     // Check if the email matches the allowed domain pattern
 //     if (!allowedEmailRegex.test(email)) {
 //       setError("Email domain must be gmail.com, outlook.com, or yahoo.com");
 //       return;
 //     }
 
-//     // Ensure all password criteria are met before login
 //     const allCriteriaMet = passwordCriteria.every((criteria) => isCriteriaMet(criteria.test));
 //     if (!allCriteriaMet) {
 //       setError("Password does not meet the required criteria.");
@@ -49,12 +43,10 @@
 //     }
 
 //     try {
-//       // Firebase authentication
 //       const userCredential = await signInWithEmailAndPassword(auth, email, password);
 //       const user = userCredential.user;
 //       const idToken = await user.getIdToken();
 
-//       // Send the ID token in the Authorization header
 //       const saveResponse = await axios.post("http://127.0.0.1:3001/clients/save", {}, {
 //         headers: {
 //           Authorization: `Bearer ${idToken}`,
@@ -66,16 +58,14 @@
 //         setMessage("Login successful!");
 //         setMessageType("success");
 
-//         // Navigate based on role (Admin, SuperAdmin, User)
 //         const role = saveResponse.data.role;
 //         let dashboardPath = "/user-dashboard/mytickets";
 //         if (role === "Admin") {
-//           dashboardPath = "/AdminDashboard";
+//           dashboardPath = "/AdminDashboard/tickets";
 //         } else if (role === "SuperAdmin") {
 //           dashboardPath = "/SuperAdminDashboard/tickets";
 //         }
 
-//         // Navigate to the corresponding dashboard
 //         setTimeout(() => {
 //           navigate(dashboardPath);
 //         }, 2000);
@@ -86,7 +76,6 @@
 //     } catch (error) {
 //       let errorMessage = "";
 
-//       // Handle Firebase errors
 //       if (error.code === "auth/user-not-found" || error.code === "auth/invalid-email") {
 //         errorMessage = "Please enter a valid email address.";
 //       } else if (error.code === "auth/wrong-password") {
@@ -108,23 +97,22 @@
 //   };
 
 //   return (
-//     <div className="login-page">
-//       <div className="login-image">
+//     <div className="login-container">
+//       <div className="login-image-container">
 //         <img
 //           src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg"
 //           alt="Login"
 //         />
 //       </div>
-//       <div className="login-form">
+//       <div className="login-form-container">
 //         <h2>Login</h2>
 //         {message && (
-//           <div className={messageType === "success" ? "success-message" : "error-message"}>
+//           <div className={messageType === "success" ? "login-message-success" : "login-message-error"}>
 //             {message}
 //           </div>
 //         )}
 //         <form onSubmit={handleLogin}>
-//           <div className="form-group">
-//             {/* Tooltip wrapping the email input field */}
+//           <div className="form-group-container">
 //             <Tooltip
 //               title="Email domain must be gmail.com, outlook.com, or yahoo.com"
 //               arrow
@@ -142,7 +130,7 @@
 //               </div>
 //             </Tooltip>
 //           </div>
-//           <div className="form-group">
+//           <div className="form-group-container">
 //             <label>Password:</label>
 //             <input
 //               type="password"
@@ -153,10 +141,9 @@
 //             />
 //           </div>
 
-//           {/* Display validation error message */}
-//           {error && <p className="error-message">{error}</p>}
+//           {error && <p className="login-error-message">{error}</p>}
 
-//           <div className="login-btn">
+//           <div className="login-button-container">
 //             <Stack direction="row" spacing={2}>
 //               <Button type="submit" variant="contained">Submit</Button>
 //               <Button variant="outlined" onClick={handleForgotPassword}>
@@ -170,8 +157,7 @@
 //   );
 // };
 
-// export default Login;
-
+// export default UserLogin;
 
 
 import React, { useState } from "react";
@@ -272,6 +258,10 @@ const UserLogin = () => {
     navigate("/forgot-password");
   };
 
+  const handleRegistration = () => {
+    navigate("/registration");
+  };
+
   return (
     <div className="login-container">
       <div className="login-image-container">
@@ -324,6 +314,11 @@ const UserLogin = () => {
               <Button type="submit" variant="contained">Submit</Button>
               <Button variant="outlined" onClick={handleForgotPassword}>
                 Forgot Password
+              </Button>
+            </Stack>
+            <Stack direction="row" spacing={2} mt={2}>
+              <Button variant="text" onClick={handleRegistration}>
+                Registration
               </Button>
             </Stack>
           </div>

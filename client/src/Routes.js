@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
+import RegistrationForm from "./components/Auth/Registration";
 import ForgotPassword from './components/Auth/ForgotPassword';
 import UserDashboard from "./components/UserPanel/UserDashboard";
 import AdminDashboard from "./components/AdminPanel/AdminDashboard";
@@ -13,7 +14,6 @@ import ChangePassword from './components/UserPanel/ChangePasword/ChangePassword'
 import UserTicketDetails from './components/UserPanel/Mytickets/Mytickets';
 import NotFound from './components/NotFound/NotFound';
 import AdminReportGeneration from './components/AdminPanel/AdminReportGeneration/AdminReportGeneration';
-
 import Tickets from './components/SuperAdminPanel/Tickets/Tickets';
 import NewTicket from './components/SuperAdminPanel/NewTicket/NewTicket';
 import Engineering from './components/SuperAdminPanel/SuperAdminEngineerManag/SuperAdminEngineerManag';
@@ -30,6 +30,7 @@ const AppRoutes = () => {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Login />} />
+        <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         
         {/* User Routes */}

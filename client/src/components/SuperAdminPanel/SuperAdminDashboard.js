@@ -64,7 +64,7 @@ function AdminTickets() {
         document.body.classList.add("fade-out");
         setTimeout(() => {
           navigate("/"); // Redirect to the login page
-        }, 550); // Delay navigation for 1 second to allow animation to finish
+        }, ); // Delay navigation for 1 second to allow animation to finish
       }
     });
   };
