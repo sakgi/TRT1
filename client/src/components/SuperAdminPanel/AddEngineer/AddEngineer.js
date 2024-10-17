@@ -4,7 +4,7 @@
 // import { useNavigate } from 'react-router-dom';
 
 // function AddEngineer() {
-//   const [rows, setRows] = useState([{ email: '' }]); // Removed name field
+//   const [rows, setRows] = useState([{ email: '' }]);
 //   const navigate = useNavigate();
 
 //   const hideNavigationBar = () => {
@@ -27,7 +27,7 @@
 //   }, []);
 
 //   const handleAddRow = () => {
-//     setRows([...rows, { email: '' }]); // Removed name field
+//     setRows([...rows, { email: '' }]);
 //   };
 
 //   const handleInputChange = (index, field, value) => {
@@ -46,14 +46,14 @@
 //     return re.test(String(email).toLowerCase());
 //   };
 
-//   const handleSubmit = () => {
+//   const handleSubmit = async () => {
 //     for (let row of rows) {
 //       if (!row.email) {
 //         Swal.fire({
 //           icon: 'error',
 //           title: 'Validation Error',
 //           text: 'Please enter an email address!',
-//           confirmButtonText: 'OK'
+//           confirmButtonText: 'OK',
 //         });
 //         return;
 //       }
@@ -62,22 +62,49 @@
 //           icon: 'error',
 //           title: 'Validation Error',
 //           text: 'Please enter a valid email address!',
-//           confirmButtonText: 'OK'
+//           confirmButtonText: 'OK',
 //         });
 //         return;
 //       }
 //     }
 
-//     Swal.fire({
-//       icon: 'success',
-//       title: 'Successfully Added Engineer!',
-//       text: 'Your engineer has been added successfully.',
-//       confirmButtonText: 'OK'
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         navigate(-1);
+//     try {
+//       const response = await fetch('/api/add-engineer', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ emails: rows.map(row => row.email) }),
+//       });
+
+//       const data = await response.json();
+//       if (response.status === 200) {
+//         Swal.fire({
+//           icon: 'success',
+//           title: 'Successfully Added Engineer!',
+//           text: data.message,
+//           confirmButtonText: 'OK',
+//         }).then((result) => {
+//           if (result.isConfirmed) {
+//             navigate(-1);
+//           }
+//         });
+//       } else {
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Error',
+//           text: data.message,
+//           confirmButtonText: 'OK',
+//         });
 //       }
-//     });
+//     } catch (error) {
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'Error',
+//         text: 'An error occurred while adding engineers.',
+//         confirmButtonText: 'OK',
+//       });
+//     }
 //   };
 
 //   return (
@@ -87,8 +114,7 @@
 //       </div>
 //       <div className="table">
 //         <div className="table-row table-header">
-//           <div className="table-cell">Email ID</div> {/* Removed "Name" */}
-//           {/* <div className="table-cell">Action</div> */}
+//           <div className="table-cell">Email ID</div>
 //         </div>
 //         {rows.map((row, index) => (
 //           <div className="table-row fade-in" key={index}>
@@ -127,6 +153,7 @@
 // }
 
 // export default AddEngineer;
+
 
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
@@ -177,6 +204,19 @@ function AddEngineer() {
   };
 
   const handleSubmit = async () => {
+    // Get the JWT token from local storage (or wherever you store it after login)
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Authentication Error',
+        text: 'No token found. Please log in again.',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+
     for (let row of rows) {
       if (!row.email) {
         Swal.fire({
@@ -199,39 +239,40 @@ function AddEngineer() {
     }
 
     try {
-      const response = await fetch('/api/add-engineer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ emails: rows.map(row => row.email) }),
-      });
+      for (let row of rows) {
+        const response = await fetch('http://localhost:1760/admin/update-role', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Add the token in the Authorization header
+          },
+          body: JSON.stringify({ email: row.email }),
+        });
 
-      const data = await response.json();
-      if (response.status === 200) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Successfully Added Engineer!',
-          text: data.message,
-          confirmButtonText: 'OK',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate(-1);
-          }
-        });
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: data.message,
-          confirmButtonText: 'OK',
-        });
+        const data = await response.json();
+        if (response.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Successfully Updated User Role!',
+            text: data.message,
+            confirmButtonText: 'OK',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: data.message,
+            confirmButtonText: 'OK',
+          });
+        }
       }
+      
+      navigate(-1); // Navigate back after completing the updates
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'An error occurred while adding engineers.',
+        text: 'An error occurred while updating user roles.',
         confirmButtonText: 'OK',
       });
     }
