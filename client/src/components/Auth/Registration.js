@@ -10,13 +10,14 @@ import {
   InputLabel,
   Select,
   Grid,
-  InputAdornment
+  InputAdornment,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import BusinessIcon from '@mui/icons-material/Business';
 import { FaUserCircle } from 'react-icons/fa';
+import axios from 'axios'; // Import axios
 import './Registration.css';
 
 const RegistrationForm = () => {
@@ -27,10 +28,12 @@ const RegistrationForm = () => {
     confirmPassword: '',
     phoneNumber: '',
     organization: '',
-    circle: ''
+    circle: '',
   });
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(''); // Add success message state
+  const [errorMessage, setErrorMessage] = useState(''); // Add error message state
 
   const validate = () => {
     let tempErrors = {};
@@ -62,11 +65,30 @@ const RegistrationForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log(formData);
-      // Handle form submission logic
+      try {
+        // Make API call to register the user
+        const response = await axios.post('http://localhost:1760/auth/register', {
+          ...formData,
+        });
+        setSuccessMessage(response.data.message); // Set success message
+        setErrorMessage(''); // Clear any previous error message
+        // Reset form fields
+        setFormData({
+          fullName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+          phoneNumber: '',
+          organization: '',
+          circle: '',
+        });
+      } catch (error) {
+        setErrorMessage(error.response.data.message || 'Something went wrong'); // Set error message
+        setSuccessMessage(''); // Clear any previous success message
+      }
     }
   };
 
@@ -80,6 +102,8 @@ const RegistrationForm = () => {
               Registration
             </Typography>
           </div>
+          {successMessage && <Typography color="green">{successMessage}</Typography>}
+          {errorMessage && <Typography color="red">{errorMessage}</Typography>}
           <form onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
