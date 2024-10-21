@@ -117,6 +117,8 @@
 
 // export default Engineering;
 
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -133,36 +135,68 @@ function Engineering() {
 
   // Fetch engineers with role "Admin" from Firebase
   useEffect(() => {
+    // const fetchEngineers = async () => {
+    //   try {
+    //     setLoading(true);
+    //     const q = query(collection(db, 'users'), where('role', '==', 'Admin'));
+    //     const querySnapshot = await getDocs(q);
+    //     const engineerList = querySnapshot.docs.map((doc) => {
+    //       const data = doc.data();
+    //       return {
+    //         id: doc.id,
+    //         fullName: `${data.First_Name} ${data.Last_Name}`,
+    //         circle: data.circle || 'N/A',
+    //         email: data.email || 'N/A',
+    //         employeeId: data.employeeId || 'N/A',
+    //         phoneNumber: data.phoneNumber || 'N/A',
+    //         organization: data.organization || 'N/A',
+    //         role: data.role || 'N/A',
+    //       };
+    //     });
+    //     setEngineers(engineerList);
+    //     setLoading(false);
+    //   } catch (error) {
+    //     setLoading(false);
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Error',
+    //       text: `Failed to fetch engineers from Firebase: ${error.message}`,
+    //       confirmButtonText: 'OK',
+    //     });
+    //   }
+    // };
+
     const fetchEngineers = async () => {
-      try {
-        setLoading(true);
-        const q = query(collection(db, 'users'), where('role', '==', 'Admin'));
-        const querySnapshot = await getDocs(q);
-        const engineerList = querySnapshot.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            fullName: `${data.First_Name} ${data.Last_Name}`,
-            circle: data.circle || 'N/A',
-            email: data.email || 'N/A',
-            employeeId: data.employeeId || 'N/A',
-            phoneNumber: data.phoneNumber || 'N/A',
-            organization: data.organization || 'N/A',
-            role: data.role || 'N/A',
-          };
-        });
-        setEngineers(engineerList);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: `Failed to fetch engineers from Firebase: ${error.message}`,
-          confirmButtonText: 'OK',
-        });
-      }
-    };
+  try {
+    setLoading(true);
+    const q = query(collection(db, 'users'), where('role', '==', 'Admin'));
+    const querySnapshot = await getDocs(q);
+    const engineerList = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        fullName: data.fullName || 'N/A',       // Use fullName field
+        circle: data.circle || 'N/A',           // Use circle field
+        email: data.email || 'N/A',             // Use email field
+        employeeId: data.employeeId || 'N/A',   // Use employeeId field
+        phoneNumber: data.phoneNumber || 'N/A', // Use phoneNumber field
+        organization: data.organization || 'N/A', // Use organization field
+        role: data.role || 'N/A',               // Use role field
+      };
+    });
+    setEngineers(engineerList);
+    setLoading(false);
+  } catch (error) {
+    setLoading(false);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: `Failed to fetch engineers from Firebase: ${error.message}`,
+      confirmButtonText: 'OK',
+    });
+  }
+};
+
 
     fetchEngineers();
   }, []);
@@ -252,12 +286,12 @@ function Engineering() {
               {filteredEngineers.length > 0 ? (
                 filteredEngineers.map((engineer) => (
                   <tr key={engineer.id}>
-                    <td>{engineer.Employee_ID || 'N/A'}</td>
+                    <td>{engineer.employeeId || 'N/A'}</td>
                     <td>{engineer.fullName || 'N/A'}</td>
-                    <td>{engineer.Email || 'N/A'}</td>
-                    <td>{engineer.Circle || 'N/A'}</td>
-                    <td>{engineer.Mobile_Number || 'N/A'}</td>
-                    <td>{engineer.Organization || 'N/A'}</td>
+                    <td>{engineer.email || 'N/A'}</td>
+                    <td>{engineer.circle || 'N/A'}</td>
+                    <td>{engineer.phoneNumber || 'N/A'}</td>
+                    <td>{engineer.organization || 'N/A'}</td>
                     <td>{engineer.role || 'N/A'}</td>
                     <td>
                       <button
