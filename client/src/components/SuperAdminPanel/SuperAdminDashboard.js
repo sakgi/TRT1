@@ -37,6 +37,38 @@ function AdminTickets() {
     setSidebarOpen(!isSidebarOpen);
   };
 
+  // const handleLogout = () => {
+  //   Swal.fire({
+  //     title: "Are you sure you want to logout?",
+  //     text: "You'll be logged out from the system.",
+  //     icon: "warning",
+  //     background: "#f7f9fc",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#d33",
+  //     cancelButtonColor: "#3085d6",
+  //     confirmButtonText: "Yes, log me out!",
+  //     cancelButtonText: "No, keep me logged in",
+  //     customClass: {
+  //       popup: "custom-popup",
+  //       confirmButton: "custom-confirm-button",
+  //       cancelButton: "custom-cancel-button",
+  //     },
+  //     showClass: {
+  //       popup: "animate__animated animate__fadeInDown",
+  //     },
+  //     hideClass: {
+  //       popup: "animate__animated animate__fadeOutUp",
+  //     },
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       document.body.classList.add("fade-out");
+  //       setTimeout(() => {
+  //         navigate("/"); // Redirect to the login page
+  //       }, ); // Delay navigation for 1 second to allow animation to finish
+  //     }
+  //   });
+  // };
+
   const handleLogout = () => {
     Swal.fire({
       title: "Are you sure you want to logout?",
@@ -61,13 +93,11 @@ function AdminTickets() {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-          navigate("/"); // Redirect to the login page
-        }, ); // Delay navigation for 1 second to allow animation to finish
+        navigate("/"); // Directly navigate to the login page without delay
       }
     });
   };
+  
 
   const closeSidebar = () => {
     setSidebarOpen(false);
