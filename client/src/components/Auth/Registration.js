@@ -22,13 +22,15 @@
 
 // const RegistrationForm = () => {
 //   const [formData, setFormData] = useState({
-//     fullName: '',
+//     firstName: '',   // Separated first name
+//     lastName: '',    // Separated last name
 //     email: '',
 //     password: '',
 //     confirmPassword: '',
 //     phoneNumber: '',
 //     organization: '',
 //     circle: '',
+//     employeeId: '',  // Added Employee ID
 //   });
 
 //   const [errors, setErrors] = useState({});
@@ -38,7 +40,8 @@
 //   const validate = () => {
 //     let tempErrors = {};
 
-//     if (!formData.fullName) tempErrors.fullName = 'Full name is required';
+//     if (!formData.firstName) tempErrors.firstName = 'First name is required';  // Validate first name
+//     if (!formData.lastName) tempErrors.lastName = 'Last name is required';    // Validate last name
 //     if (!formData.email) tempErrors.email = 'Email is required';
 //     else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = 'Email is not valid';
 
@@ -52,6 +55,8 @@
 //     else if (!/^\d{10}$/.test(formData.phoneNumber)) tempErrors.phoneNumber = 'Phone number must be 10 digits';
 
 //     if (!formData.organization) tempErrors.organization = 'Organization is required';
+
+//     if (!formData.employeeId) tempErrors.employeeId = 'Employee ID is required';  // Employee ID validation
 
 //     setErrors(tempErrors);
 //     return Object.keys(tempErrors).length === 0;
@@ -77,13 +82,15 @@
 //         setErrorMessage(''); // Clear any previous error message
 //         // Reset form fields
 //         setFormData({
-//           fullName: '',
+//           firstName: '',  // Reset first name
+//           lastName: '',   // Reset last name
 //           email: '',
 //           password: '',
 //           confirmPassword: '',
 //           phoneNumber: '',
 //           organization: '',
 //           circle: '',
+//           employeeId: '',  // Reset Employee ID
 //         });
 //       } catch (error) {
 //         setErrorMessage(error.response.data.message || 'Something went wrong'); // Set error message
@@ -105,26 +112,37 @@
 //           {successMessage && <Typography color="green">{successMessage}</Typography>}
 //           {errorMessage && <Typography color="red">{errorMessage}</Typography>}
 //           <form onSubmit={handleSubmit}>
-//             <TextField
-//               variant="outlined"
-//               margin="normal"
-//               fullWidth
-//               label="Full Name"
-//               name="fullName"
-//               autoComplete="name"
-//               autoFocus
-//               value={formData.fullName}
-//               onChange={handleChange}
-//               error={!!errors.fullName}
-//               helperText={errors.fullName}
-//               InputProps={{
-//                 startAdornment: (
-//                   <InputAdornment position="start">
-//                     <LockOutlinedIcon />
-//                   </InputAdornment>
-//                 ),
-//               }}
-//             />
+//             <Grid container spacing={2}>
+//               <Grid item xs={6}>
+//                 <TextField
+//                   variant="outlined"
+//                   margin="normal"
+//                   fullWidth
+//                   label="First Name"
+//                   name="firstName"
+//                   autoComplete="given-name"
+//                   autoFocus
+//                   value={formData.firstName}
+//                   onChange={handleChange}
+//                   error={!!errors.firstName}
+//                   helperText={errors.firstName}
+//                 />
+//               </Grid>
+//               <Grid item xs={6}>
+//                 <TextField
+//                   variant="outlined"
+//                   margin="normal"
+//                   fullWidth
+//                   label="Last Name"
+//                   name="lastName"
+//                   autoComplete="family-name"
+//                   value={formData.lastName}
+//                   onChange={handleChange}
+//                   error={!!errors.lastName}
+//                   helperText={errors.lastName}
+//                 />
+//               </Grid>
+//             </Grid>
 //             <TextField
 //               variant="outlined"
 //               margin="normal"
@@ -188,6 +206,18 @@
 //               </Grid>
 //             </Grid>
 
+//             <TextField
+//               variant="outlined"
+//               margin="normal"
+//               fullWidth
+//               label="Employee ID"
+//               name="employeeId"
+//               value={formData.employeeId}
+//               onChange={handleChange}
+//               error={!!errors.employeeId}
+//               helperText={errors.employeeId}
+//             />
+
 //             <FormControl variant="outlined" fullWidth margin="normal" className="inputField">
 //               <InputLabel>Circle</InputLabel>
 //               <Select
@@ -196,9 +226,24 @@
 //                 value={formData.circle}
 //                 onChange={handleChange}
 //               >
-//                 <MenuItem value="circle1">Circle 1</MenuItem>
-//                 <MenuItem value="circle2">Circle 2</MenuItem>
-//                 <MenuItem value="circle3">Circle 3</MenuItem>
+//                 <MenuItem value="MP">Madhya Pradesh</MenuItem>
+//                 <MenuItem value="UPW">UP West</MenuItem>
+//                 <MenuItem value="UPE">UP East</MenuItem>
+//                 <MenuItem value="RJ">Rajasthan</MenuItem>
+//                 <MenuItem value="GUJ">Gujrat</MenuItem>
+//                 <MenuItem value="MH">Maharashtra</MenuItem>
+//                 <MenuItem value="BH">Bihar</MenuItem>
+//                 <MenuItem value="ROB">Rest of Bengal</MenuItem>
+//                 <MenuItem value="PNB">Punjab</MenuItem>
+//                 <MenuItem value="KTK">Karnataka</MenuItem>
+//                 <MenuItem value="MUM">Mumbai</MenuItem>
+//                 <MenuItem value="CH">Chennai</MenuItem>
+//                 <MenuItem value="JH">Jharkand</MenuItem>
+//                 <MenuItem value="KOC">Kolkata</MenuItem>
+//                 <MenuItem value="HP">Himachal Pradesh</MenuItem>
+//                 <MenuItem value="AP">Andhra Pradesh</MenuItem>
+//                 <MenuItem value="ROTN">Rest if Tamil Nadu</MenuItem>
+//                 <MenuItem value="KE">Kerala</MenuItem>
 //               </Select>
 //             </FormControl>
 
@@ -288,14 +333,15 @@ import './Registration.css';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
+    First_Name: '',        // Updated to match schema
+    Last_Name: '',         // Updated to match schema
+    Email: '',             // Updated to match schema
     password: '',
     confirmPassword: '',
-    phoneNumber: '',
-    organization: '',
-    circle: '',
-    employeeId: '',  // Added Employee ID
+    Mobile_Number: '',     // Updated to match schema
+    Organization: '',      // Updated to match schema
+    Circle: '',            // Updated to match schema
+    Employee_ID: '',       // Updated to match schema
   });
 
   const [errors, setErrors] = useState({});
@@ -305,9 +351,10 @@ const RegistrationForm = () => {
   const validate = () => {
     let tempErrors = {};
 
-    if (!formData.fullName) tempErrors.fullName = 'Full name is required';
-    if (!formData.email) tempErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = 'Email is not valid';
+    if (!formData.First_Name) tempErrors.First_Name = 'First name is required';  // Validate first name
+    if (!formData.Last_Name) tempErrors.Last_Name = 'Last name is required';    // Validate last name
+    if (!formData.Email) tempErrors.Email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.Email)) tempErrors.Email = 'Email is not valid';
 
     if (!formData.password) tempErrors.password = 'Password is required';
     else if (formData.password.length < 6) tempErrors.password = 'Password must be at least 6 characters long';
@@ -315,12 +362,12 @@ const RegistrationForm = () => {
     if (!formData.confirmPassword) tempErrors.confirmPassword = 'Please confirm your password';
     else if (formData.password !== formData.confirmPassword) tempErrors.confirmPassword = 'Passwords do not match';
 
-    if (!formData.phoneNumber) tempErrors.phoneNumber = 'Phone number is required';
-    else if (!/^\d{10}$/.test(formData.phoneNumber)) tempErrors.phoneNumber = 'Phone number must be 10 digits';
+    if (!formData.Mobile_Number) tempErrors.Mobile_Number = 'Phone number is required';
+    else if (!/^\d{10}$/.test(formData.Mobile_Number)) tempErrors.Mobile_Number = 'Phone number must be 10 digits';
 
-    if (!formData.organization) tempErrors.organization = 'Organization is required';
+    if (!formData.Organization) tempErrors.Organization = 'Organization is required';
 
-    if (!formData.employeeId) tempErrors.employeeId = 'Employee ID is required';  // Employee ID validation
+    if (!formData.Employee_ID) tempErrors.Employee_ID = 'Employee ID is required';  // Employee ID validation
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -346,14 +393,15 @@ const RegistrationForm = () => {
         setErrorMessage(''); // Clear any previous error message
         // Reset form fields
         setFormData({
-          fullName: '',
-          email: '',
+          First_Name: '',      
+          Last_Name: '',       
+          Email: '',           
           password: '',
           confirmPassword: '',
-          phoneNumber: '',
-          organization: '',
-          circle: '',
-          employeeId: '',  // Reset Employee ID
+          Mobile_Number: '',   
+          Organization: '',   
+          Circle: '',          
+          Employee_ID: '',     
         });
       } catch (error) {
         setErrorMessage(error.response.data.message || 'Something went wrong'); // Set error message
@@ -375,37 +423,48 @@ const RegistrationForm = () => {
           {successMessage && <Typography color="green">{successMessage}</Typography>}
           {errorMessage && <Typography color="red">{errorMessage}</Typography>}
           <form onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              label="Full Name"
-              name="fullName"
-              autoComplete="name"
-              autoFocus
-              value={formData.fullName}
-              onChange={handleChange}
-              error={!!errors.fullName}
-              helperText={errors.fullName}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <LockOutlinedIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="First Name"
+                  name="First_Name"  // Updated to match schema
+                  autoComplete="given-name"
+                  autoFocus
+                  value={formData.First_Name}  // Updated to match schema
+                  onChange={handleChange}
+                  error={!!errors.First_Name}  // Updated to match schema
+                  helperText={errors.First_Name}  // Updated to match schema
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="Last Name"
+                  name="Last_Name"  // Updated to match schema
+                  autoComplete="family-name"
+                  value={formData.Last_Name}  // Updated to match schema
+                  onChange={handleChange}
+                  error={!!errors.Last_Name}  // Updated to match schema
+                  helperText={errors.Last_Name}  // Updated to match schema
+                />
+              </Grid>
+            </Grid>
             <TextField
               variant="outlined"
               margin="normal"
               fullWidth
               label="Email Address"
-              name="email"
+              name="Email"  // Updated to match schema
               autoComplete="email"
-              value={formData.email}
+              value={formData.Email}  // Updated to match schema
               onChange={handleChange}
-              error={!!errors.email}
-              helperText={errors.email}
+              error={!!errors.Email}  // Updated to match schema
+              helperText={errors.Email}  // Updated to match schema
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -422,11 +481,11 @@ const RegistrationForm = () => {
                   margin="normal"
                   fullWidth
                   label="Phone Number"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
+                  name="Mobile_Number"  // Updated to match schema
+                  value={formData.Mobile_Number}  // Updated to match schema
                   onChange={handleChange}
-                  error={!!errors.phoneNumber}
-                  helperText={errors.phoneNumber}
+                  error={!!errors.Mobile_Number}  // Updated to match schema
+                  helperText={errors.Mobile_Number}  // Updated to match schema
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -442,11 +501,11 @@ const RegistrationForm = () => {
                   margin="normal"
                   fullWidth
                   label="Organization"
-                  name="organization"
-                  value={formData.organization}
+                  name="Organization"  // Updated to match schema
+                  value={formData.Organization}  // Updated to match schema
                   onChange={handleChange}
-                  error={!!errors.organization}
-                  helperText={errors.organization}
+                  error={!!errors.Organization}  // Updated to match schema
+                  helperText={errors.Organization}  // Updated to match schema
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -463,24 +522,39 @@ const RegistrationForm = () => {
               margin="normal"
               fullWidth
               label="Employee ID"
-              name="employeeId"
-              value={formData.employeeId}
+              name="Employee_ID"  // Updated to match schema
+              value={formData.Employee_ID}  // Updated to match schema
               onChange={handleChange}
-              error={!!errors.employeeId}
-              helperText={errors.employeeId}
+              error={!!errors.Employee_ID}  // Updated to match schema
+              helperText={errors.Employee_ID}  // Updated to match schema
             />
 
             <FormControl variant="outlined" fullWidth margin="normal" className="inputField">
               <InputLabel>Circle</InputLabel>
               <Select
                 label="Circle"
-                name="circle"
-                value={formData.circle}
+                name="Circle"  // Updated to match schema
+                value={formData.Circle}  // Updated to match schema
                 onChange={handleChange}
               >
-                <MenuItem value="circle1">Circle 1</MenuItem>
-                <MenuItem value="circle2">Circle 2</MenuItem>
-                <MenuItem value="circle3">Circle 3</MenuItem>
+                <MenuItem value="MP">Madhya Pradesh</MenuItem>
+                <MenuItem value="UPW">UP West</MenuItem>
+                <MenuItem value="UPE">UP East</MenuItem>
+                <MenuItem value="RJ">Rajasthan</MenuItem>
+                <MenuItem value="GUJ">Gujrat</MenuItem>
+                <MenuItem value="MH">Maharashtra</MenuItem>
+                <MenuItem value="BH">Bihar</MenuItem>
+                <MenuItem value="ROB">Rest of Bengal</MenuItem>
+                <MenuItem value="PNB">Punjab</MenuItem>
+                <MenuItem value="KTK">Karnataka</MenuItem>
+                <MenuItem value="MUM">Mumbai</MenuItem>
+                <MenuItem value="CH">Chennai</MenuItem>
+                <MenuItem value="JH">Jharkand</MenuItem>
+                <MenuItem value="KOC">Kolkata</MenuItem>
+                <MenuItem value="HP">Himachal Pradesh</MenuItem>
+                <MenuItem value="AP">Andhra Pradesh</MenuItem>
+                <MenuItem value="ROTN">Rest of Tamil Nadu</MenuItem>
+                <MenuItem value="KE">Kerala</MenuItem>
               </Select>
             </FormControl>
 
