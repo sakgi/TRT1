@@ -47,7 +47,7 @@ const AppRoutes = () => {
         <Route path="/AdminDashboard" element={<AdminDashboard />}>
           <Route path="admin-report-generation" element={<AdminReportGeneration />} />
           <Route path="tickets" element={<Tickets />}>
-            <Route path="ticket-detail" element={<TicketDetail />} />
+            <Route path="ticket-detail/:ticketId" element={<TicketDetail />} />
           </Route>
           <Route path="new-ticket" element={<NewTicket />} />
           <Route path="approval" element={<Approval />} />
@@ -64,8 +64,8 @@ const AppRoutes = () => {
           <Route path="report-generation" element={<ReportGeneration />} />
           <Route path="approval" element={<Approval />} />
           <Route path="profile" element={<SuperAdminProfile />} />
-          <Route path="ticket-detail" element={<TicketDetail />} />
-          <Route path="viewticket" element={<ViewTicketDetails />} />
+          <Route path="ticket-detail/:ticketId" element={<TicketDetail />} />
+          <Route path="viewticket/:ticketId" element={<ViewTicketDetails />} />
         </Route>
 
         {/* Catch-all for 404 */}

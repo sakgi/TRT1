@@ -10,7 +10,11 @@
   font-family: 'Roboto', sans-serif; /* Clean font */
   animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
 }
-
+.wrap-text {
+  white-space: normal;
+  max-width: 200px; /* adjust the width as needed */
+  overflow-wrap: break-word;
+}
 .top-section{
     display: flex;
     flex-direction: column;
@@ -61,7 +65,7 @@
   }
 }
 
-/* Button for adding a ticket *//* New ticket and total tickets container */
+/* Button for adding a ticket // New ticket and total tickets container */
 .new-ticket-total-container {
   display: flex;
   justify-content: flex-start; /* Align both items to the left */
@@ -85,8 +89,6 @@
   background-color: #0056b3;
   transform: scale(1.05);
 }
-
-
 
 .total-tickets {
   font-size: 1.5em;
