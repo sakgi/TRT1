@@ -1,5 +1,5 @@
 .root {
-    height: 100vh;
+    height: 170vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,6 +14,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 600px; /* Increase the max-width to 600px */
     width: 150%; /* Change to 100% for better responsiveness */
+    height:fit-content;
   }
   
   .title {

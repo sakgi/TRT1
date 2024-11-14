@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from "C:/Users/tatko/Downloads/ticket-raising-tool-front/client/src/firebase/firebaseconfig.js";
+import { auth, db } from "../../../firebase/firebaseconfig";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
-import { db } from "C:/Users/tatko/Downloads/ticket-raising-tool-front/client/src/firebase/firebaseconfig.js"; // Firebase config import
+import { db } from "../../../firebase/firebaseconfig"; // Firebase config import
 import {
   collection,
   query,

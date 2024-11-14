@@ -12,6 +12,7 @@ import Swal from "sweetalert2"; // Import SweetAlert
 import { motion } from "framer-motion"; // Import Framer Motion
 import "./AdminDashboard.css";
 // import logo from "../assets/logo.png";
+import logo from "../Auth/Logo.png";
 
 function AdminTickets() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -69,7 +70,15 @@ function AdminTickets() {
             <FaBars />
           </div>
           <div className="navbar-right">
-            {/* <img src={logo} alt="Logo" className="logo" /> */}
+          <motion.span
+                  className="animated-text"
+                  initial={{ opacity: 0, y: -50 }} // Starting point of the animation (offscreen and invisible)
+                  animate={{ opacity: 1, y: 0 }} // Ending point (fully visible and in position)
+                  transition={{ duration: 1, ease: "easeOut" }}// Animation duration and easing
+                >
+                  Insta ICT Solutions
+                </motion.span>
+            <img src={logo} alt="Logo" className="logo" />
           </div>
         </header>
       )}

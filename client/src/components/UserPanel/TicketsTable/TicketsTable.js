@@ -191,6 +191,9 @@ const TicketsTable = () => {
         querySnapshot.forEach((doc) => {
           fetchedTickets.push({ id: doc.id, ...doc.data() });
         });
+        fetchedTickets.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt); // Assuming createdAt is a timestamp
+        });
 
         setTickets(fetchedTickets);
         console.log('Fetched Tickets:', fetchedTickets); // Debugging log
@@ -248,8 +251,8 @@ const TicketsTable = () => {
           <div className="filters-trt">
             <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
               <option value="">All Status</option>
-              <option value="Open">Open</option>
-              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
               <option value="Closed">Closed</option>
             </select>
 
@@ -279,9 +282,9 @@ const TicketsTable = () => {
               <th>Ticket ID</th>
               <th>Subject</th>
               <th>Created At</th>
-             
               <th>Status</th>
               <th>Priority</th>
+              <th>Raised Time</th>
             </tr>
           </thead>
           <tbody>
@@ -297,6 +300,7 @@ const TicketsTable = () => {
  {/* Last Update is kept blank */}
                 <td>{ticket.status}</td>
                 <td>{ticket.priority || 'N/A'}</td> {/* Priority is kept blank */}
+                <td>{ticket.time}</td>
               </tr>
             ))}
           </tbody>
